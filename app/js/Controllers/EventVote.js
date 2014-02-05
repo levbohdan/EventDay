@@ -25,4 +25,10 @@ app.controller("EventVoteCtrl", ["$scope", function (scopeCtrl) {
     ];
     scopeCtrl.reverse=false;
     scopeCtrl.byOrder="vote";
+    scopeCtrl.voteUp = function (item) {
+        item.vote ++;
+    }
+    scopeCtrl.voteDown = function (item) {
+        item.vote-=1;
+    }
 }]);
