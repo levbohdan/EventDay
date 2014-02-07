@@ -1,34 +1,22 @@
-app.controller("EventVoteCtrl", ["$scope", function (scopeCtrl) {
-    scopeCtrl.events = [
-        {
-            name: 'Birthday',
-            availableDays: [
-                {date: new Date(2014,1,7), vote: 3},
-                {date: new Date(2014,1,8), vote: 2},
-                {date: new Date(2014,1,9), vote: 1}
-            ]
-        },
-        {
-            name: 'Picnic',
-            availableDays: [
-                {date: new Date(2014,1,3), vote: 0},
-                {date: new Date(2014,1,5), vote: 0}
-            ]
-        },
-        {
-            name: 'Party',
-            availableDays: [
-                {date: new Date(2014,1,7), vote: 0},
-                {date: new Date(2014,1,14), vote: 0}
-            ]
-        }
-    ];
-    scopeCtrl.reverse=false;
-    scopeCtrl.byOrder="vote";
-    scopeCtrl.voteUp = function (item) {
-        item.vote ++;
+app.controller("EventVoteCtrl", ["$scope", "eventData", function ($scope, eventData) {
+$scope.newEvent=function (){
+    eventData.saveEvent();
+}
+    $scope.addEvent=function() {
+        if($scope.eventName===undefined) $scope.eventName='new event';
+        $scope.events.push({name:$scope.eventName, availableDays:[]});
+        $scope.eventName=undefined;
     }
-    scopeCtrl.voteDown = function (item) {
-        item.vote-=1;
+    $scope.addDate=function(event,eventDate) {
+        event.availableDays.push({date:eventDate,vote:0});
+    }
+    $scope.events = []//eventData.getEvents();
+    $scope.reverse = false;
+    $scope.byOrder = "vote";
+    $scope.voteUp = function (item) {
+        item.vote++;
+    }
+    $scope.voteDown = function (item) {
+        item.vote -= 1;
     }
 }]);

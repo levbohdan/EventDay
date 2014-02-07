@@ -1,0 +1,17 @@
+{
+    "name": "Birthday",
+    "availableDays": [
+        {
+            "date": "02/07/2014",
+            "vote": 3
+        },
+        {
+            "date": "05/08/2014",
+            "vote": 2
+        },
+        {
+            "date": "12/08/2000",
+            "vote": 1
+        }
+    ]
+}
